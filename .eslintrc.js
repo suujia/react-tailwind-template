@@ -20,6 +20,7 @@ module.exports = {
     "jsx-a11y/no-redundant-roles": "off",
     "@typescript-eslint/no-var-requires": "off",
     "react/jsx-filename-extension": "off",
+    "jsx-a11y/label-has-associated-control": "off",
   },
   settings: {
     "import/resolver": {

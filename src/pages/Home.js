@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import {
   ChatAltIcon,
@@ -438,7 +438,7 @@ export default function Example() {
                       className="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg"
                     >
                       <article
-                        aria-labelledby={"question-title-" + question.id}
+                        aria-labelledby={`question-title-${question.id}`}
                       >
                         <div>
                           <div className="flex space-x-3">
@@ -561,7 +561,7 @@ export default function Example() {
                             </div>
                           </div>
                           <h2
-                            id={"question-title-" + question.id}
+                            id={`question-title-${question.id}`}
                             className="mt-4 text-base font-medium text-gray-900"
                           >
                             {question.title}
@@ -569,6 +569,7 @@ export default function Example() {
                         </div>
                         <div
                           className="mt-2 text-sm text-gray-700 space-y-4"
+                          // eslint-disable-next-line react/no-danger
                           dangerouslySetInnerHTML={{ __html: question.body }}
                         />
                         <div className="mt-6 flex justify-between space-x-8">
@@ -658,24 +659,26 @@ export default function Example() {
                           role="list"
                           className="-my-4 divide-y divide-gray-200"
                         >
-                          {whoToFollow.map((user) => (
+                          {whoToFollow.map((currUser) => (
                             <li
-                              key={user.handle}
+                              key={currUser.handle}
                               className="flex items-center py-4 space-x-3"
                             >
                               <div className="flex-shrink-0">
                                 <img
                                   className="h-8 w-8 rounded-full"
-                                  src={user.imageUrl}
+                                  src={currUser.imageUrl}
                                   alt=""
                                 />
                               </div>
                               <div className="min-w-0 flex-1">
                                 <p className="text-sm font-medium text-gray-900">
-                                  <a href={user.href}>{user.name}</a>
+                                  <a href={currUser.href}>{currUser.name}</a>
                                 </p>
                                 <p className="text-sm text-gray-500">
-                                  <a href={user.href}>{"@" + user.handle}</a>
+                                  <a
+                                    href={currUser.href}
+                                  >{`@${currUser.handle}`}</a>
                                 </p>
                               </div>
                               <div className="flex-shrink-0">
